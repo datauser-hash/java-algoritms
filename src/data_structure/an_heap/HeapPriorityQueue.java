@@ -38,6 +38,7 @@ public class HeapPriorityQueue<K,V> extends AbstractPriorityQueue<K,V> {
         return right(j) < heap.size();
     }
 
+    // Changes
     protected void swap(int i, int j) {
         Entry<K,V> temp = heap.get(i);
         heap.set(i, heap.get(j));
