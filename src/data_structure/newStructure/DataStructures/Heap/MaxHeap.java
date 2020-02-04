@@ -1,6 +1,6 @@
 package data_structure.newStructure.DataStructures.Heap;
 
-import DataStructures.DefaultComparator;
+import data_structure.newStructure.DataStructures.DefaultComparator;
 
 import java.util.ArrayList;
 import java.util.Comparator;
