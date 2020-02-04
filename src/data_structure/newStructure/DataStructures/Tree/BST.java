@@ -1,6 +1,6 @@
 package data_structure.newStructure.DataStructures.Tree;
 
-import DataStructures.DefaultComparator;
+import data_structure.newStructure.DataStructures.DefaultComparator;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -403,5 +403,54 @@ public class BST<E> {
         return buffer;
     }
 
+    //TODO 12.3 -1
+    public void insertRecursive(E element){
+        Node<E> newNode = createNode(element,null,null,null);
+        if (root == null){
+            root = newNode;
+        }else {
+            insertRecursiveHelper(root,newNode,null);
+        }
+    }
+    public void insertRecursiveHelper(Node<E> n,Node<E> newNode,Node<E> parent){
+        if (n == null){
+            newNode.setParent(parent);
+            int cmp = comp.compare(newNode.getElement(),parent.getElement());
+            if (cmp < 0){
+                parent.setLeft(newNode);
+            }else{
+                parent.setRight(newNode);
+            }
+        }else{
+            int cmp = comp.compare(newNode.getElement(),n.getElement());
+            if (cmp < 0){
+                insertRecursiveHelper(n.getLeft(),newNode,n);
+            }else {
+                insertRecursiveHelper(n.getRight(),newNode,n);
+            }
+        }
+    }
+
+    //TODO 12.3-5
+
+    //TODO 12.3-6
+    public E deleteAlternate(Node<E> x){
+        if (x.getLeft() == null){
+            transplant(x,x.getRight());
+        }else if(x.getRight() == null){
+            transplant(x,x.getLeft());
+        }else{
+            Node<E> y = treeMax(x.getLeft());
+            if (y.getParent() != x){
+                transplant(y,y.getLeft());
+                y.setLeft(x.getLeft());
+                y.getLeft().setParent(y);
+            }
+            transplant(x,y);
+            y.setRight(x.getRight());
+            y.getRight().setParent(y);
+        }
+        return x.getElement();
+    }
 
 }
