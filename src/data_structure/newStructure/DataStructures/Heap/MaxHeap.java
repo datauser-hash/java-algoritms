@@ -13,6 +13,7 @@ public class MaxHeap<E> {
     public MaxHeap() {
         comp = new DefaultComparator<>();
     }
+
     public MaxHeap(Comparator<E> c){
         comp = c;
     }
@@ -20,17 +21,21 @@ public class MaxHeap<E> {
     public int size() {
         return heap.size();
     }
+
     public boolean isEmpty(){
         return heap.isEmpty();
     }
+
     public E max() {
         return heap.get(0);
     }
+
     public E insert(E value){
         heap.add(value);
         upHeap(heap.size() - 1);
         return value;
     }
+
     public E removeMax(){
         if(heap.isEmpty()) { return  null; }
         E answer = heap.get(0);
@@ -39,6 +44,7 @@ public class MaxHeap<E> {
         downHeap(0);
         return answer;
     }
+
     protected void upHeap(int i){
         while (i > 0){
             int p = parent(i);
@@ -49,8 +55,8 @@ public class MaxHeap<E> {
                 i = p;
             }
         }
-
     }
+
     protected void downHeap(int i){
         while (hasLeft(i)){
             int leftChild = left(i);
@@ -69,26 +75,33 @@ public class MaxHeap<E> {
             }
         }
     }
+
     protected  int parent(int i){
         return i/2;
     }
+
     protected int left(int i){
         return 2*i;
     }
+
     protected int right(int i){
         return 2*i + 1;
     }
+
     protected boolean hasLeft(int i){
         return left(i) < heap.size();
     }
+
     protected boolean hasRight(int i){
         return right(i) < heap.size();
     }
+
     protected void swap(int i, int j){
         E tmp = heap.get(i);
         heap.set(i,heap.get(j));
         heap.set(j,tmp);
     }
+
     protected void heapify(){
         int startIndex = parent(size() - 1);
         for(int j = startIndex; j >= 0; j--){

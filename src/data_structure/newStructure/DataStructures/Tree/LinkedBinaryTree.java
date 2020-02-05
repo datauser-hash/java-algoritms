@@ -45,7 +45,7 @@ public class LinkedBinaryTree<E> {
 
         public void setRight(Node<E> right) { this.right = right; }
 
-        public void finalize(){
+        public void utilize(){
             this.element = null;
             this.parent = this;
             this.left = null;
@@ -70,6 +70,7 @@ public class LinkedBinaryTree<E> {
 
     // LinkedBinaryTree instance variables
     protected Node<E> root = null;            // root of the tree
+
     private int size = 0;                   // number of nodes in the tree
 
     // constructor
@@ -226,7 +227,7 @@ public class LinkedBinaryTree<E> {
         }
         size--;
         E tmp = node.getElement();
-        node.finalize();
+        node.utilize();
         return tmp;
     }
 

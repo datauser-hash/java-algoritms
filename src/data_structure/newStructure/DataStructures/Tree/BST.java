@@ -59,7 +59,7 @@ public class BST<E> {
             this.right = right;
         }
 
-        public void finalize(){
+        public void utilize(){
             this.element = null;
             this.parent = null;
             this.right = null;
@@ -355,6 +355,7 @@ public class BST<E> {
         }
         return x;
     }
+
     public Node<E> treeMaxRecursive(Node<E> x){
         if (x.getRight() != null){
             return treeMaxRecursive(x.getRight());
@@ -412,6 +413,7 @@ public class BST<E> {
             insertRecursiveHelper(root,newNode,null);
         }
     }
+
     public void insertRecursiveHelper(Node<E> n,Node<E> newNode,Node<E> parent){
         if (n == null){
             newNode.setParent(parent);
@@ -432,6 +434,7 @@ public class BST<E> {
     }
 
     //TODO 12.3-5
+    // For solving this problem we should change the architecture of our implementation which is not prefereable
 
     //TODO 12.3-6
     public E deleteAlternate(Node<E> x){

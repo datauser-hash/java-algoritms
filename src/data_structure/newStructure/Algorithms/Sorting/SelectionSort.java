@@ -6,7 +6,7 @@ import java.util.Random;
 public class SelectionSort {
 
     // Selection sort algorithm
-    public static void selectionSort(int arr[]) {
+    public static void selectionSort(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             int min = i;
             int j = i + 1;
@@ -87,7 +87,7 @@ public class SelectionSort {
     }
 
     // Fills the array with random elements in the range of 10
-    public static void randomFill(int arr[]) {
+    public static void randomFill(int[] arr) {
         Random rand = new Random();
         for (int i = 0; i < arr.length; i++) {
             arr[i] = rand.nextInt() % 10;
@@ -95,7 +95,7 @@ public class SelectionSort {
     }
 
     // Checks wheather the array is sorted in increasing order
-    public static boolean checkIncreasing(int arr[]) {
+    public static boolean checkIncreasing(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = i + 1; j < arr.length; j++) {
                 if (arr[j] < arr[i]) {
@@ -107,7 +107,7 @@ public class SelectionSort {
     }
 
     // Checks wheather the array is sorted in decreasing order
-    public static boolean checkDecreasing(int arr[]) {
+    public static boolean checkDecreasing(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = i + 1; j < arr.length; j++) {
                 if (arr[j] > arr[i]) {

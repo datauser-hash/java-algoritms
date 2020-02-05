@@ -8,7 +8,7 @@ import java.util.Random;
 public class QuckSortRepetion {
 
 
-    public static void quickSort(int arr[]) {
+    public static void quickSort(int[] arr) {
         quickSort(arr, 0, arr.length - 1);
     }
 

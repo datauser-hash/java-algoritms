@@ -12,15 +12,16 @@ public class RBTree<E> {
         private Node<E> parent;
         private Node<E> left;
         private Node<E> right;
-        private int colour; // 0 black 1 red;
+        private int color; // 0 black 1 red;
 
         public Node(E e,Node<E> above,Node<E> leftChild,Node<E> rightChild){
             this.element = e;
             this.parent = above;
             this.left = leftChild;
             this.right = rightChild;
-            this.colour = 0;
+            this.color = 0;
         }
+
         public E getElement() {
             return element;
         }
@@ -37,8 +38,8 @@ public class RBTree<E> {
             return right;
         }
 
-        public int getColour() {
-            return colour;
+        public int getColor() {
+            return color;
         }
 
         public void setElement(E element) {
@@ -57,8 +58,8 @@ public class RBTree<E> {
             this.right = right;
         }
 
-        public void setColour(int colour) {
-            this.colour = colour;
+        public void setColor(int color) {
+            this.color = color;
         }
     }
     // ------------------------ end of the nested class ----------------------
@@ -73,6 +74,7 @@ public class RBTree<E> {
     public RBTree(){
         this.comp = new DefaultComparator<E>();
     }
+
     public RBTree(Comparator<E> comp){
         this.comp = comp;
     }
@@ -104,10 +106,10 @@ public class RBTree<E> {
     }
 
     private void InsertFixup(Node<E> p){
-        while (p.getParent().getColour() == 1){
+        while (p.getParent().getColor() == 1){
             if (p.getParent() == p.getParent().getParent().getLeft()){
                 Node<E> y = p.getParent().getParent().getRight();
-                if (y.getColour() == 1){
+                if (y.getColor() == 1){
                     makeBlack(p.getParent());
                     makeBlack(y);
                     makeBlack(p.getParent().getParent());
@@ -142,6 +144,7 @@ public class RBTree<E> {
         y.setLeft(x);
         x.setParent(y);
     }
+
     private void rightRotate(Node<E> y){
         Node<E> x = y.getRight();
         y.setLeft(x.getLeft());
@@ -168,17 +171,19 @@ public class RBTree<E> {
     }
 
     public boolean isRed(Node<E> n) {
-        return n.getColour() == 1;
-    }
-    public boolean isBlack(Node<E> n){
-        return n.getColour() == 0;
-    }
-    public void makeRed(Node<E> n){
-        n.setColour(1);
-    }
-    public void makeBlack(Node<E> n){
-        n.setColour(0);
+        return n.getColor() == 1;
     }
 
+    public boolean isBlack(Node<E> n){
+        return n.getColor() == 0;
+    }
+
+    public void makeRed(Node<E> n){
+        n.setColor(1);
+    }
+
+    public void makeBlack(Node<E> n){
+        n.setColor(0);
+    }
 
 }

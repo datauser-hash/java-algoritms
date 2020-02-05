@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class MergeSort {
     // Performs mergesort on the given array
-    public static void mergeSort(int arr[]) {
+    public static void mergeSort(int[] arr) {
         if (arr.length < 2) {
             return;
         }
@@ -19,7 +19,7 @@ public class MergeSort {
     }
 
     // Mergis two arrays into one array
-    public static void merge(int arr1[], int arr2[], int orig[]) {
+    public static void merge(int[] arr1, int[] arr2, int[] orig) {
         int i = 0, j = 0;
         while (i + j < arr1.length + arr2.length) {
             if (j >= arr2.length || (i < arr1.length && arr1[i] < arr2[j])) {
@@ -92,7 +92,7 @@ public class MergeSort {
     }
 
     // fills the array with random integers in the range of 10
-    public static void randomFill(int arr[]) {
+    public static void randomFill(int[] arr) {
         Random rand = new Random();
         for (int i = 0; i < arr.length; i++) {
             arr[i] = rand.nextInt() % 10;
@@ -100,7 +100,7 @@ public class MergeSort {
     }
 
     // Checks wheather the elements in the array are sorted in increasing order
-    public static boolean checkIncreasing(int arr[]) {
+    public static boolean checkIncreasing(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = i + 1; j < arr.length; j++) {
                 if (arr[j] < arr[i]) {
@@ -112,7 +112,7 @@ public class MergeSort {
     }
 
     // Checks wheather the elements in the array are sorted in decreasing order
-    public static boolean checkDecreasing(int arr[]) {
+    public static boolean checkDecreasing(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = i + 1; j < arr.length; j++) {
                 if (arr[j] > arr[i]) {

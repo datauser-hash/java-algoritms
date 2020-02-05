@@ -29,7 +29,7 @@ public class Heapsort {
      * For the given array checks wheather the root can be pushed down the heap
      *
      */
-    public static void heapify(int arr[], int size, int root) {
+    public static void heapify(int[] arr, int size, int root) {
         int largestEl = root;
         int left = 2 * root + 1;
         int right = 2 * root + 2;
@@ -114,7 +114,7 @@ public class Heapsort {
     /*
      * Fill the array with random numbers in the range of 10
      */
-    public static void randomFill(int arr[]) {
+    public static void randomFill(int[] arr) {
         Random rand = new Random();
         for (int i = 0; i < arr.length; i++) {
             arr[i] = rand.nextInt() % 10;
@@ -124,7 +124,7 @@ public class Heapsort {
     /*
      * Checks wheather the array is in increasing order
      */
-    public static boolean checkIncreasing(int arr[]) {
+    public static boolean checkIncreasing(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = i + 1; j < arr.length; j++) {
                 if (arr[j] < arr[i]) {
@@ -136,9 +136,9 @@ public class Heapsort {
     }
 
     /*
-     * Checks wheather the array is in decreasing order
+     * Checks whether the array is in decreasing order
      */
-    public static boolean checkDecreasing(int arr[]) {
+    public static boolean checkDecreasing(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = i + 1; j < arr.length; j++) {
                 if (arr[j] > arr[i]) {

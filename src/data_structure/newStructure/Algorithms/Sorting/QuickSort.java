@@ -1,19 +1,17 @@
 package data_structure.newStructure.Algorithms.Sorting;
 
-import javafx.util.Pair;
-
 import java.util.Arrays;
 import java.util.Random;
 
 public class QuickSort {
 
     // QuickSort algorithm runner
-    public static void quickSort(int arr[]) {
+    public static void quickSort(int[] arr) {
         randomQuickSort(arr, 0, arr.length - 1);
     }
 
     // QuickSort algorithm with random pivot selection
-    public static void randomQuickSort(int arr[], int low, int high) {
+    public static void randomQuickSort(int[] arr, int low, int high) {
         if (low < high) {
             int pi = random_partition(arr, low, high);
             randomQuickSort(arr, low, pi - 1);
@@ -31,7 +29,7 @@ public class QuickSort {
     }
 
     // selects the random pivot and then passes the work to the partition function`
-    private static int random_partition(int arr[], int start, int end) {
+    private static int random_partition(int[] arr, int start, int end) {
         Random rand = new Random();
         int i = rand.nextInt(end - start) + start;
         int tmp = arr[i];
@@ -123,7 +121,7 @@ public class QuickSort {
     }
 
     // Fills the array with random numbers in the range of 10
-    public static void randomFill(int arr[]) {
+    public static void randomFill(int[] arr) {
         Random rand = new Random();
         for (int i = 0; i < arr.length; i++) {
             arr[i] = rand.nextInt() % 10;
@@ -131,7 +129,7 @@ public class QuickSort {
     }
 
     // Chechs wheather the array is sorted in increasing order
-    public static boolean checkIncreasing(int arr[]) {
+    public static boolean checkIncreasing(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = i + 1; j < arr.length; j++) {
                 if (arr[j] < arr[i]) {
@@ -143,7 +141,7 @@ public class QuickSort {
     }
 
     // Checks wheather the array is in the decreasing order
-    public static boolean checkDecreasing(int arr[]) {
+    public static boolean checkDecreasing(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = i + 1; j < arr.length; j++) {
                 if (arr[j] > arr[i]) {
