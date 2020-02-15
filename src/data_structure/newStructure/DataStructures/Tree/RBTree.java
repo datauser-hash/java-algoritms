@@ -146,7 +146,7 @@ public class RBTree<E> {
     }
 
     private void rightRotate(Node<E> y){
-        Node<E> x = y.getRight();
+        Node<E> x = y.getLeft();
         y.setLeft(x.getLeft());
         if (x.getRight() != nil){
             x.getRight().setParent(y);
