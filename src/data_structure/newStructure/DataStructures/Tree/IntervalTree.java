@@ -106,23 +106,23 @@ public class IntervalTree {
     }
 
     private Node root;
-    private Node TNIL;
+    private final Node TREE_NIL;
 
 
     public IntervalTree(){
-        TNIL = new Node(0,0,null,null,null,0,0);
-        root = TNIL;
+        TREE_NIL = new Node(0,0,null,null,null,0,0);
+        root = TREE_NIL;
     }
 
     public void insert(int start,int end){
-        insertHelper(new Node(start,end,TNIL,TNIL,TNIL,1,end));
+        insertHelper(new Node(start,end, TREE_NIL, TREE_NIL, TREE_NIL,1,end));
     }
 
     public void insertHelper(Node newNode){
         Node y = null;
         Node x = this.root;
 
-        while (x != TNIL){
+        while (x != TREE_NIL){
             y = x;
             if (newNode.interval.start < x.interval.start){
                 if (newNode.getMaxSize() > x.getMaxSize()){
@@ -211,7 +211,7 @@ public class IntervalTree {
     public void rightRotate(Node x) {
         Node y = x.left;
         x.left = y.right;
-        if (y.right != TNIL) {
+        if (y.right != TREE_NIL) {
             y.right.parent = x;
         }
         y.parent = x.parent;
@@ -231,7 +231,7 @@ public class IntervalTree {
     public void leftRotate(Node x) {
         Node y = x.right;
         x.right = y.left;
-        if (y.left != TNIL) {
+        if (y.left != TREE_NIL) {
             y.left.parent = x;
         }
         y.parent = x.parent;
@@ -249,7 +249,7 @@ public class IntervalTree {
     }
 
     public Node minimum(Node node) {
-        while (node.left != TNIL) {
+        while (node.left != TREE_NIL) {
             node = node.left;
         }
         return node;
@@ -257,7 +257,7 @@ public class IntervalTree {
 
     // find the node with the maximum key
     public Node maximum(Node node) {
-        while (node.right != TNIL) {
+        while (node.right != TREE_NIL) {
             node = node.right;
         }
         return node;
@@ -265,8 +265,8 @@ public class IntervalTree {
 
     public Node IntervalSearch(int start,int end){
         Node x = root;
-        while (x != TNIL && (start > x.interval.end || x.interval.start > end)){
-            if (x.left != TNIL && x.left.getMaxSize() >= start){
+        while (x != TREE_NIL && (start > x.interval.end || x.interval.start > end)){
+            if (x.left != TREE_NIL && x.left.getMaxSize() >= start){
                 x = x.getLeft();
             }
             else {
@@ -281,9 +281,9 @@ public class IntervalTree {
     }
     private void deleteNodeHelper(Node node, int key) {
         // find the node containing key
-        Node z = TNIL;
+        Node z = TREE_NIL;
         Node x, y;
-        while (node != TNIL){
+        while (node != TREE_NIL){
             if (node.interval.start == key) {
                 z = node;
             }
@@ -294,17 +294,17 @@ public class IntervalTree {
             }
         }
 
-        if (z == TNIL) {
+        if (z == TREE_NIL) {
             System.out.println("Couldn't find key in the tree");
             return;
         }
 
         y = z;
         int yOriginalColor = y.color;
-        if (z.left == TNIL) {
+        if (z.left == TREE_NIL) {
             x = z.right;
             rbTransplant(z, z.right);
-        } else if (z.right == TNIL) {
+        } else if (z.right == TREE_NIL) {
             x = z.left;
             rbTransplant(z, z.left);
         } else {
@@ -331,7 +331,7 @@ public class IntervalTree {
     public void fixSize(Node x){
         Node z = x;
         int newMaxInt = x.getMaxSize();
-        while (z != TNIL && z.getParent().getMaxSize() < newMaxInt){
+        while (z != TREE_NIL && z.getParent().getMaxSize() < newMaxInt){
             z = z.getParent();
             z.setMaxSize(newMaxInt);
         }
@@ -419,7 +419,7 @@ public class IntervalTree {
     }
     private void printHelper(Node root, String indent, boolean last) {
         // print the tree structure on the screen
-        if (root != TNIL) {
+        if (root != TREE_NIL) {
             System.out.print(indent);
             if (last) {
                 System.out.print("R----");
@@ -466,10 +466,8 @@ public class IntervalTree {
 
         System.out.println();
         Node x = tree.IntervalSearch(17,20);
-        if (x != tree.TNIL){
+        if (x != tree.TREE_NIL){
             System.out.println(x.interval.start + " " + x.interval.end);
         }
-
-        
     }
 }
