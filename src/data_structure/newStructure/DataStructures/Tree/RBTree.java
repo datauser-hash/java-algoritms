@@ -1,6 +1,7 @@
-
-
 package data_structure.newStructure.DataStructures.Tree;
+
+import data_structure.newStructure.DataStructures.DefaultComparator;
+
 
 // class RedBlackTree implements the operations in Red Black Tree
 public class RBTree {
